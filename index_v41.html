@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gateway Garden Center Content Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles_v41.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero card">
+      <p class="eyebrow">Gateway Garden Center</p>
+      <h1>Gateway Garden Center Content Hub</h1>
+      <p class="hero-copy">Organize content work, collaborate with your team, track progress, and keep campaign timing visible in one streamlined workspace.</p>
+      <div class="hero-foot">
+        <span class="build-badge" id="buildVersion">Build v4.2</span>
+        <div class="hero-meta">
+          <span id="todayDate"></span>
+          <span class="dot"></span>
+          <span>Anyone with link can edit</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="Primary sections">
+      <button class="tab is-active" data-tab="submissions">Content Operations</button>
+      <button class="tab" data-tab="calendar">Marketing Calendar</button>
+      <button class="tab" data-tab="reviews">Design Feedback &amp; Approvals</button>
+    </nav>
+
+    <main>
+      <section class="panel is-active" id="submissions">
+        <details class="panel-details" open>
+          <summary class="panel-summary">
+            <div class="panel-summary-row">
+              <div class="panel-header">
+                <h2>Content Creation</h2>
+                <p>Create tasks, collect gateway details, and keep progress moving.</p>
+              </div>
+              <span class="panel-chevron" aria-hidden="true">▾</span>
+            </div>
+          </summary>
+
+          <div class="two-col-layout">
+            <form class="card form-grid" id="submissionForm">
+              <h3 class="span-2">Create Content Task</h3>
+              <p class="span-2 helper-text">All fields are optional.</p>
+              <label>
+                Task Title
+                <input name="title" placeholder="Spring Promo Landing Page" />
+              </label>
+              <label>
+                Channel
+                <select name="channel">
+                  <option value="">Select channel</option>
+                  <option>Email</option>
+                  <option>Social</option>
+                  <option>Website</option>
+                  <option>Print</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label>
+                Required By
+                <input name="requiredBy" type="date" />
+              </label>
+              <label>
+                Priority
+                <select name="priority">
+                  <option value="">Select priority</option>
+                  <option>High</option>
+                  <option selected>Medium</option>
+                  <option>Low</option>
+                </select>
+              </label>
+              <label>
+                Assignee
+                <input name="assignee" placeholder="Who owns this next?" />
+              </label>
+              <label>
+                Role
+                <select name="role">
+                  <option value="">Select role</option>
+                  <option>Gateway</option>
+                  <option>Designer</option>
+                  <option>Approver</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label class="span-2">
+                Reference Link
+                <input name="referenceLink" placeholder="https://..." />
+              </label>
+              <label class="span-2">
+                Designer Brief
+                <textarea name="brief" rows="3" placeholder="What content piece is needed and by when?"></textarea>
+              </label>
+              <div class="span-2 actions">
+                <button class="btn btn-primary" type="submit">Add to Content Creation</button>
+              </div>
+            </form>
+
+            <div class="card">
+              <div class="toolbar">
+                <h3>Gateway Team Feedback</h3>
+                <div class="filters">
+                  <select id="statusFilter">
+                    <option value="all">All active</option>
+                    <option>Queued</option>
+                    <option>In Progress</option>
+                    <option>Ready</option>
+                    <option>Archived</option>
+                  </select>
+                  <select id="decisionFilter">
+                    <option value="all">All approvals</option>
+                    <option>None Chosen</option>
+                    <option>Approved</option>
+                    <option>Needs Correction</option>
+                  </select>
+                </div>
+              </div>
+              <div class="stack" id="submissionList"></div>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="panel" id="calendar">
+        <details class="panel-details" open>
+          <summary class="panel-summary">
+            <div class="panel-summary-row">
+              <div class="panel-header">
+                <h2>Marketing Calendar</h2>
+                <p>Month view with editable events, color coding, and task linking.</p>
+              </div>
+              <span class="panel-chevron" aria-hidden="true">▾</span>
+            </div>
+          </summary>
+
+          <div class="calendar-layout">
+            <div class="calendar-main">
+              <div class="calendar-head card">
+                <button class="btn" id="prevMonth">Previous</button>
+                <h3 id="calendarLabel"></h3>
+                <div class="calendar-head-actions">
+                  <button class="btn btn-primary" id="newEventBtn">New Event</button>
+                  <button class="btn" id="nextMonth">Next</button>
+                </div>
+              </div>
+              <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
+            <aside class="calendar-side card">
+              <h3>Due This Week</h3>
+              <div class="stack" id="dueSoonList"></div>
+            </aside>
+          </div>
+        </details>
+      </section>
+
+      <section class="panel" id="reviews">
+        <details class="panel-details" open>
+          <summary class="panel-summary">
+            <div class="panel-summary-row">
+              <div class="panel-header">
+                <h2>Design Feedback &amp; Approvals</h2>
+                <p>Manage design assets, set approval state, and track decision comments.</p>
+              </div>
+              <span class="panel-chevron" aria-hidden="true">▾</span>
+            </div>
+          </summary>
+
+          <div class="stack" id="reviewsList"></div>
+        </details>
+      </section>
+    </main>
+  </div>
+
+  <template id="submissionCardTemplate">
+    <article class="item submission-card">
+      <div class="item-top">
+        <strong class="submission-title"></strong>
+        <span class="badge submission-badge"></span>
+      </div>
+      <div class="actions queue-actions">
+        <button class="btn archive-btn" data-action="archive" type="button">Archive</button>
+        <button class="btn delete-btn" data-action="delete" type="button">Delete</button>
+      </div>
+      <span class="meta submission-meta"></span>
+      <div class="designer-note">
+        <p class="designer-note-label">FROM DESIGNER</p>
+        <p class="designer-note-text"></p>
+      </div>
+      <div class="task-attachments-view"></div>
+
+      <div class="details-block">
+        <h4>Gateway Team Feedback</h4>
+        <form class="details-form form-grid compact-grid">
+          <label>
+            Copy / Messaging
+            <textarea name="copy" rows="2" placeholder="Headline, body copy, key value points"></textarea>
+          </label>
+          <label>
+            Pricing / Promotion
+            <textarea name="pricing" rows="2" placeholder="Price points, discounts, terms"></textarea>
+          </label>
+          <label class="span-2">
+            Additional Notes
+            <textarea name="notes" rows="2" placeholder="Anything else needed for production"></textarea>
+          </label>
+          <div class="span-2 actions">
+            <button class="btn" type="submit">SUBMIT</button>
+          </div>
+        </form>
+        <p class="save-indicator"></p>
+        <div class="details-view"></div>
+        <div class="actions">
+          <button class="btn edit-details-btn" data-action="edit-details" type="button">Edit Feedback</button>
+        </div>
+        <h4>Reply / Follow-up</h4>
+        <div class="thread-list"></div>
+        <form class="thread-form">
+          <textarea name="message" rows="2" placeholder="Request more information or share follow-up response"></textarea>
+          <div class="actions">
+            <button class="btn" type="submit">Send Reply</button>
+            <button class="btn" data-action="continue-reviews" type="button">Continue to Design Approvals</button>
+          </div>
+        </form>
+      </div>
+    </article>
+  </template>
+
+  <template id="eventModalTemplate">
+    <div class="modal-backdrop">
+      <div class="modal card">
+        <h3 id="eventModalTitle">New Calendar Event</h3>
+        <form class="form-grid compact-grid" id="eventForm">
+          <label class="span-2">
+            Event Title
+            <input name="title" />
+          </label>
+          <label>
+            Date
+            <input name="date" type="date" />
+          </label>
+          <label>
+            Time
+            <input name="time" type="time" />
+          </label>
+          <label class="span-2">
+            Notes
+            <textarea name="notes" rows="3" placeholder="Optional details"></textarea>
+          </label>
+          <label class="span-2">
+            Link to Content Task
+            <select name="linkedTaskId" id="linkedTaskSelect">
+              <option value="">No linked task</option>
+            </select>
+          </label>
+          <label>
+            Event Color
+            <input name="color" type="color" value="#5b6e36" />
+          </label>
+          <div class="span-2 actions modal-actions">
+            <button class="btn" id="openLinkedTaskBtn" type="button">Open Linked Task</button>
+            <button class="btn" data-modal-close type="button">Cancel</button>
+            <button class="btn" id="deleteEventBtn" type="button">Delete</button>
+            <button class="btn btn-primary" type="submit">Save Event</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </template>
+
+  <script defer src="app_v41.js"></script>
+</body>
+</html>

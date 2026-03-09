@@ -1,0 +1,183 @@
+/* ============================================================
+   GATEWAY GARDEN CENTER — DESIGN SYSTEM
+   Single source of truth for all visual tokens.
+   Do not write raw color, spacing, or type values outside
+   this file. Reference tokens everywhere else.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   GOOGLE FONTS
+   Loaded via <link> tags in the HTML <head> for best
+   performance. Playfair Display (display/headings) and
+   DM Sans (body/UI) are declared there.
+   ------------------------------------------------------------ */
+
+:root {
+
+  /* ----------------------------------------------------------
+     BRAND PALETTE — raw hex values
+     Reference these only to build semantic tokens below.
+     ---------------------------------------------------------- */
+
+  /* Neutrals */
+  --color-snowdrop:      #FFFDF7;
+  --color-dogwood:       #EEE3DA;
+
+  /* Light tones */
+  --color-honeysuckle:   #EEDEC1;
+  --color-pond:          #CBD5D3;
+  --color-pistachio:     #9BC2A1;
+  --color-aster:         #D6D0E4;
+  --color-apple-blossom: #F4B3C8;
+
+  /* Midtones */
+  --color-artichoke:     #918030;
+  --color-lilypad:       #5B6E36;
+  --color-slate-blue:    #788587;
+  --color-marigold:      #FBAC20;
+
+  /* Dark tones — one per layout maximum */
+  --color-oak-leaf:      #1B3B1C;
+  --color-chameleon:     #EDE9E2;
+  --color-cardinal:      #AE4848;
+  --color-blue-violet:   #49457D;
+  --color-cedar:         #835D4A;
+
+  /* ----------------------------------------------------------
+     SEMANTIC COLOR TOKENS
+     These are what you use in component CSS.
+     ---------------------------------------------------------- */
+
+  /* Surfaces */
+  --color-bg:             var(--color-snowdrop);
+  --color-bg-surface:     var(--color-dogwood);
+  --color-bg-elevated:    var(--color-honeysuckle);
+
+  /* Text */
+  --color-text:           var(--color-oak-leaf);
+  --color-text-muted:     var(--color-slate-blue);
+  --color-text-on-dark:   var(--color-snowdrop);
+
+  /* Borders */
+  --color-border:         var(--color-pond);
+  --color-border-strong:  var(--color-artichoke);
+
+  /* Brand */
+  --color-brand:          var(--color-artichoke);
+  --color-brand-dark:     var(--color-lilypad);
+
+  /* Accent & states */
+  --color-accent:         var(--color-marigold);
+  --color-focus:          var(--color-artichoke);
+  --color-success:        var(--color-pistachio);
+  --color-error:          var(--color-cardinal);
+  --color-warning:        var(--color-marigold);
+  --color-info:           var(--color-pond);
+
+  /* ----------------------------------------------------------
+     SEMANTIC BADGE TOKENS
+     Explicit surface + text pairs for status chips.
+     ---------------------------------------------------------- */
+
+  /* Queued — warm amber */
+  --badge-queued-bg:      #F5EDD0;
+  --badge-queued-text:    #4A3800;
+
+  /* In Progress — soft green */
+  --badge-inprogress-bg:  #DFF0D8;
+  --badge-inprogress-text:#1A3A0A;
+
+  /* Ready / Approved — deeper green */
+  --badge-ready-bg:       #CDE5CE;
+  --badge-ready-text:     #0F2E10;
+
+  /* Needs Correction / Changes — muted red */
+  --badge-needs-bg:       #F2D8D8;
+  --badge-needs-text:     #5C1A1A;
+
+  /* Pending Review — cool neutral */
+  --badge-pending-bg:     var(--color-aster);
+  --badge-pending-text:   #2E2B50;
+
+  /* Archived — low-contrast neutral */
+  --badge-archived-bg:    var(--color-chameleon);
+  --badge-archived-text:  var(--color-slate-blue);
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY
+     ---------------------------------------------------------- */
+
+  --font-display:  'Playfair Display', Georgia, serif;
+  --font-body:     'DM Sans', sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
+
+  --font-weight-normal:  400;
+  --font-weight-medium:  500;
+  --font-weight-bold:    700;
+
+  /* Fluid type scale — clamp(min, preferred, max) */
+  --text-xs:   clamp(0.70rem,  0.68rem + 0.09vw, 0.75rem);
+  --text-sm:   clamp(0.85rem,  0.82rem + 0.16vw, 0.938rem);
+  --text-base: clamp(1rem,     0.96rem + 0.22vw, 1.125rem);
+  --text-lg:   clamp(1.15rem,  1.09rem + 0.29vw, 1.35rem);
+  --text-xl:   clamp(1.3rem,   1.22rem + 0.39vw, 1.6rem);
+  --text-2xl:  clamp(1.6rem,   1.47rem + 0.63vw, 2rem);
+  --text-3xl:  clamp(2rem,     1.81rem + 0.98vw, 2.7rem);
+  --text-4xl:  clamp(2.5rem,   2.2rem  + 1.5vw,  3.5rem);
+
+  --leading-tight:   1.15;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.75;
+
+  /* ----------------------------------------------------------
+     SPACING — 4 px base unit
+     ---------------------------------------------------------- */
+
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ----------------------------------------------------------
+     SHAPE — border radius scale
+     ---------------------------------------------------------- */
+
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* ----------------------------------------------------------
+     SHADOWS — tinted with Oak Leaf (27, 59, 28)
+     ---------------------------------------------------------- */
+
+  --shadow-color: 27, 59, 28;
+  --shadow-sm:  0 1px  3px  rgba(var(--shadow-color), 0.08);
+  --shadow-md:  0 4px  12px rgba(var(--shadow-color), 0.10);
+  --shadow-lg:  0 12px 28px rgba(var(--shadow-color), 0.12);
+  --shadow-xl:  0 20px 48px rgba(var(--shadow-color), 0.15);
+
+  /* ----------------------------------------------------------
+     TRANSITIONS
+     ---------------------------------------------------------- */
+
+  --transition-fast:   120ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow:   300ms ease;
+
+  /* ----------------------------------------------------------
+     LAYOUT
+     ---------------------------------------------------------- */
+
+  --max-width-content: 1180px;
+  --max-width-prose:   74ch;
+}

@@ -41,6 +41,11 @@ class GatewayInstagramTasks:
                 - Must-include details: {details}
                 - Available photos/videos or capture options: {assets}
 
+                If the intake includes one or more URLs, use the Read URL tool to
+                extract specific plants, product details, event facts, or source
+                context before building the strategy. Do not claim you cannot
+                browse links until the Read URL tool has failed.
+
                 Return:
                 1. Best audience
                 2. Best format: Reel, carousel, static post, story, or mixed
@@ -67,6 +72,10 @@ class GatewayInstagramTasks:
                 Sources:
                 {sources}
 
+                If the topic or prior context includes a URL, use the Read URL tool
+                for that URL before using web search. Use page text as context only;
+                do not copy source language.
+
                 Return:
                 1. Relevant themes
                 2. Useful educational angles
@@ -90,6 +99,10 @@ class GatewayInstagramTasks:
 
                 Topic: {topic}
                 Details: {details}
+
+                If details include a URL, use the Read URL tool to inspect the page
+                for plant names, care claims, native status, bloom time, exposure,
+                and other facts that need verification.
 
                 Focus on:
                 - Mid-Atlantic seasonal relevance

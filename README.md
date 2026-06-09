@@ -114,7 +114,7 @@ The app will ask for:
 - Must-include details
 - Available photos/videos
 
-The better the intake, the better the content. Include real dates, prices, inventory, workshop details, event links, or plant lists whenever possible.
+The better the intake, the better the content. Include real dates, prices, inventory, workshop details, event links, product/stock URLs, or plant lists whenever possible. When you include a URL in the details, the crew can read the page and extract usable context before creating content.
 
 ## Output philosophy
 

@@ -7,6 +7,7 @@ import os
 from crewai import Agent, LLM
 
 from gateway_instagram_content_crew.tools.search_tools import SearchTools
+from gateway_instagram_content_crew.tools.url_tools import URLTools
 
 
 class GatewayInstagramAgents:
@@ -21,7 +22,7 @@ class GatewayInstagramAgents:
             role="Gateway Garden Center Brand Strategist",
             goal="Develop Gateway-specific Instagram strategy for seasonal garden center content.",
             backstory="You understand independent garden centers, ecological gardening, native plants, and retail content.",
-            tools=[SearchTools.search_web],
+            tools=[SearchTools.search_web, URLTools.read_url],
             allow_delegation=False,
             llm=self.llm,
             verbose=True,
@@ -32,7 +33,7 @@ class GatewayInstagramAgents:
             role="Trusted Horticultural Voice Researcher",
             goal="Use respected horticultural sources as benchmarks for terminology and accuracy.",
             backstory="You extract useful themes and accuracy guardrails without copying source language.",
-            tools=[SearchTools.search_web],
+            tools=[SearchTools.search_web, URLTools.read_url],
             allow_delegation=False,
             llm=self.llm,
             verbose=True,
@@ -43,7 +44,7 @@ class GatewayInstagramAgents:
             role="Horticulture Accuracy Editor",
             goal="Check plant, gardening, native plant, pollinator, and seasonal claims for accuracy.",
             backstory="You prevent vague or misleading plant claims and keep content useful for Mid-Atlantic gardeners.",
-            tools=[SearchTools.search_web],
+            tools=[SearchTools.search_web, URLTools.read_url],
             allow_delegation=False,
             llm=self.llm,
             verbose=True,

@@ -2,9 +2,21 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from dotenv import load_dotenv
 
-from gateway_instagram_crew.crew import GatewayInstagramCrew
+from gateway_instagram_content_crew.crew import GatewayInstagramCrew
+
+
+DEFAULT_INPUTS = {
+    "topic": "Seasonal Gateway Garden Center Instagram content",
+    "goal": "Store visit and customer education",
+    "run_date": "Not provided",
+    "audience": "Gateway's local customers and gardeners",
+    "details": "Not provided",
+    "assets": "Real plants, benches, tags, containers, greenhouse, staff hands, and store displays",
+}
 
 
 def _ask(prompt: str, default: str | None = None) -> str:
@@ -15,7 +27,25 @@ def _ask(prompt: str, default: str | None = None) -> str:
     return default or "Not provided"
 
 
-def run() -> None:
+def run(inputs: dict[str, Any] | None = None) -> str:
+    """Run the crew with API/AMP inputs."""
+    load_dotenv()
+
+    crew_inputs = {**DEFAULT_INPUTS, **(inputs or {})}
+    normalized_inputs = {
+        "topic": str(crew_inputs["topic"]),
+        "goal": str(crew_inputs["goal"]),
+        "run_date": str(crew_inputs["run_date"]),
+        "audience": str(crew_inputs["audience"]),
+        "details": str(crew_inputs["details"]),
+        "assets": str(crew_inputs["assets"]),
+    }
+
+    return GatewayInstagramCrew().kickoff(inputs=normalized_inputs)
+
+
+def run_interactive() -> None:
+    """Run the crew from a local terminal prompt."""
     load_dotenv()
 
     print("## Gateway Instagram Content Crew")
@@ -40,16 +70,16 @@ def run() -> None:
         "Real plants, benches, tags, containers, greenhouse, staff hands, and store displays",
     )
 
-    crew = GatewayInstagramCrew(
-        topic=topic,
-        goal=goal,
-        run_date=run_date,
-        audience=audience,
-        details=details,
-        assets=assets,
+    result = GatewayInstagramCrew().kickoff(
+        inputs={
+            "topic": topic,
+            "goal": goal,
+            "run_date": run_date,
+            "audience": audience,
+            "details": details,
+            "assets": assets,
+        }
     )
-
-    result = crew.kickoff()
 
     print("\n\n############################")
     print("## Final Content Package")
@@ -58,4 +88,4 @@ def run() -> None:
 
 
 if __name__ == "__main__":
-    run()
+    run_interactive()

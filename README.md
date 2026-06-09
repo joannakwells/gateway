@@ -63,7 +63,45 @@ uv run gateway-instagram
 or:
 
 ```bash
-uv run python -m gateway_instagram_crew.main
+uv run python -m gateway_instagram_content_crew.main
+```
+
+## CrewAI AMP deployment
+
+This project is prepared as a CrewAI AMP crew deployment:
+
+- Source package lives in `src/gateway_instagram_content_crew`
+- `src/gateway_instagram_content_crew/main.py` exposes `run(inputs=None)` for hosted execution
+- `pyproject.toml` includes `[tool.crewai] type = "crew"`
+- `GatewayInstagramCrew` uses the required `@CrewBase` decorator
+
+Expected kickoff inputs:
+
+```json
+{
+  "topic": "Plant, event, sale, service, or seasonal topic",
+  "goal": "Store visit, event signup, education, online purchase, or awareness",
+  "run_date": "Post date, season, or deadline",
+  "audience": "New gardeners, native plant shoppers, houseplant buyers, etc.",
+  "details": "Dates, prices, inventory, speaker, location, CTA, link, or plant list",
+  "assets": "Photos/videos available or what staff can capture"
+}
+```
+
+Before deploying to AMP, generate and commit `uv.lock`:
+
+```bash
+uv lock
+git add uv.lock
+git commit -m "Add uv lockfile for CrewAI deployment"
+git push
+```
+
+Then deploy through CrewAI AMP by connecting this GitHub repository, or use:
+
+```bash
+crewai login
+crewai deploy create
 ```
 
 ## Recommended intake

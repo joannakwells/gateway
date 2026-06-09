@@ -6,7 +6,7 @@ import os
 
 from crewai import Agent, LLM
 
-from gateway_instagram_crew.tools.search_tools import SearchTools
+from gateway_instagram_content_crew.tools.search_tools import SearchTools
 
 
 class GatewayInstagramAgents:

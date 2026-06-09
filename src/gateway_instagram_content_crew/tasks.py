@@ -7,7 +7,7 @@ from textwrap import dedent
 
 from crewai import Agent, Task
 
-from gateway_instagram_crew.brand_context import GATEWAY_BRAND_CONTEXT, TRUSTED_VOICE_URLS
+from gateway_instagram_content_crew.brand_context import GATEWAY_BRAND_CONTEXT, TRUSTED_VOICE_URLS
 
 
 class GatewayInstagramTasks:

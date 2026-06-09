@@ -11,7 +11,17 @@ dependencies = [
 ]
 
 [project.scripts]
-gateway-instagram = "gateway_instagram_crew.main:run"
+gateway-instagram = "gateway_instagram_content_crew.main:run_interactive"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.crewai]
+type = "crew"
 
 [tool.ruff]
 line-length = 100

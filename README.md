@@ -1,0 +1,90 @@
+# Gateway Instagram Content Crew
+
+A Gateway Garden Center-specific CrewAI project for creating polished, useful, botanically grounded Instagram content.
+
+This replaces the generic Instagram post example with a production workflow built around Gateway's brand standards, horticultural accuracy, seasonal retail context, local authority, and realistic photo/reel direction.
+
+## What this crew produces
+
+Each run generates a complete Instagram content package with:
+
+- Campaign strategy
+- Peer/trusted-voice research scan
+- Horticulture accuracy review
+- Three Instagram concepts
+- Captions, hooks, CTAs, hashtags, on-image text, and staff capture notes
+- Realistic visual direction for in-store, greenhouse, plant bench, and garden content
+- Final QA scoring and recommendation
+
+## Gateway context built in
+
+The project includes Gateway-specific brand context:
+
+- Website: https://gatewaygardens.com
+- Address: 7277 Lancaster Pike, Hockessin, Delaware 19707
+- Family-owned since 1979
+- Native plants, ecological gardening, vibrant annuals, non-invasive plants, pollinator support, and practical garden expertise
+- Brand style guidance from the Gateway Brand Style Guide
+- Peer/trusted voices:
+  - Mt. Cuba Center
+  - Longwood Gardens
+  - Delaware Center for Horticulture
+  - North Creek Nurseries
+
+## Setup
+
+1. Install dependencies:
+
+```bash
+uv sync
+```
+
+2. Copy the environment template:
+
+```bash
+cp .env.example .env
+```
+
+3. Fill in the required keys in `.env`:
+
+```bash
+SERPER_API_KEY=your_serper_key
+BROWSERLESS_API_KEY=your_browserless_key
+MODEL=ollama/llama3.1
+OLLAMA_BASE_URL=http://localhost:11434
+```
+
+4. Run the crew:
+
+```bash
+uv run gateway-instagram
+```
+
+or:
+
+```bash
+uv run python -m gateway_instagram_crew.main
+```
+
+## Recommended intake
+
+The app will ask for:
+
+- Topic
+- Goal
+- Run date / seasonal context
+- Audience
+- Must-include details
+- Available photos/videos
+
+The better the intake, the better the content. Include real dates, prices, inventory, workshop details, event links, or plant lists whenever possible.
+
+## Output philosophy
+
+This crew is designed to avoid generic garden-influencer copy. It should produce content that feels like Gateway's in-house content team: warm, useful, specific, locally relevant, visually feasible, and grounded in plant knowledge.
+
+## Notes
+
+- Do not store private API keys in the repo.
+- The tool uses peer websites as quality benchmarks only. It should not copy their language.
+- The horticulture editor is intentionally strict. Unsupported claims should be flagged instead of invented.

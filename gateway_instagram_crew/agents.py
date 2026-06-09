@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import os
-from textwrap import dedent
 
 from crewai import Agent, LLM
 

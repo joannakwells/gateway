@@ -49,9 +49,8 @@ cp .env.example .env
 
 ```bash
 SERPER_API_KEY=your_serper_key
-BROWSERLESS_API_KEY=your_browserless_key
-MODEL=ollama/llama3.1
-OLLAMA_BASE_URL=http://localhost:11434
+OPENAI_API_KEY=your_openai_key
+MODEL=gpt-4o
 ```
 
 4. Run the crew:

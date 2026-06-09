@@ -11,10 +11,10 @@ from gateway_instagram_content_crew.tools.search_tools import SearchTools
 
 class GatewayInstagramAgents:
     def __init__(self) -> None:
-        self.llm = LLM(
-            model=os.getenv("MODEL", "ollama/llama3.1"),
-            base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
-        )
+        llm_kwargs = {"model": os.getenv("MODEL", "gpt-4o")}
+        if base_url := os.getenv("LLM_BASE_URL"):
+            llm_kwargs["base_url"] = base_url
+        self.llm = LLM(**llm_kwargs)
 
     def brand_strategist(self) -> Agent:
         return Agent(
